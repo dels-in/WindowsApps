@@ -1,0 +1,15 @@
+/Users/vlad/RiderProjects/WindowsAppsConsole/WindowApps/bin/Debug/net6.0/WindowApps
+/Users/vlad/RiderProjects/WindowsAppsConsole/WindowApps/bin/Debug/net6.0/WindowApps.deps.json
+/Users/vlad/RiderProjects/WindowsAppsConsole/WindowApps/bin/Debug/net6.0/WindowApps.runtimeconfig.json
+/Users/vlad/RiderProjects/WindowsAppsConsole/WindowApps/bin/Debug/net6.0/WindowApps.dll
+/Users/vlad/RiderProjects/WindowsAppsConsole/WindowApps/bin/Debug/net6.0/WindowApps.pdb
+/Users/vlad/RiderProjects/WindowsAppsConsole/WindowApps/obj/Debug/net6.0/WindowApps.csproj.AssemblyReference.cache
+/Users/vlad/RiderProjects/WindowsAppsConsole/WindowApps/obj/Debug/net6.0/WindowApps.GeneratedMSBuildEditorConfig.editorconfig
+/Users/vlad/RiderProjects/WindowsAppsConsole/WindowApps/obj/Debug/net6.0/WindowApps.AssemblyInfoInputs.cache
+/Users/vlad/RiderProjects/WindowsAppsConsole/WindowApps/obj/Debug/net6.0/WindowApps.AssemblyInfo.cs
+/Users/vlad/RiderProjects/WindowsAppsConsole/WindowApps/obj/Debug/net6.0/WindowApps.csproj.CoreCompileInputs.cache
+/Users/vlad/RiderProjects/WindowsAppsConsole/WindowApps/obj/Debug/net6.0/WindowApps.dll
+/Users/vlad/RiderProjects/WindowsAppsConsole/WindowApps/obj/Debug/net6.0/refint/WindowApps.dll
+/Users/vlad/RiderProjects/WindowsAppsConsole/WindowApps/obj/Debug/net6.0/WindowApps.pdb
+/Users/vlad/RiderProjects/WindowsAppsConsole/WindowApps/obj/Debug/net6.0/WindowApps.genruntimeconfig.cache
+/Users/vlad/RiderProjects/WindowsAppsConsole/WindowApps/obj/Debug/net6.0/ref/WindowApps.dll
