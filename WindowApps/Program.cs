@@ -69,7 +69,6 @@ while (flag)
     }
 }
 
-
 static string[] GetQuestions(int countQuestions)
 {
     string[] questions = new string[countQuestions];
