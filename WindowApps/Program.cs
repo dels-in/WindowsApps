@@ -26,7 +26,7 @@ while (flag)
         }
 
         indexes.Add(randomQuestionIndex);
-        
+
         Console.WriteLine(questions[randomQuestionIndex]);
 
         var userAnswer = 0;
@@ -95,11 +95,35 @@ static int[] GetAnswers(int countAnswers)
 static string[] GetDiagnoses(int countDiagnoses)
 {
     var diagnoses = new string[countDiagnoses];
-    diagnoses[0] = "кретин";
-    diagnoses[1] = "идиот";
-    diagnoses[2] = "дурак";
-    diagnoses[3] = "нормальный";
-    diagnoses[4] = "талант";
-    diagnoses[5] = "гений";
+    for (var i = 0; i < countDiagnoses; i++)
+    {
+        if (i < countDiagnoses / 6)
+        {
+            diagnoses[i] = "кретин";
+        }
+
+        if (i >= countDiagnoses / 6 && i < countDiagnoses * 2 / 6)
+        {
+            diagnoses[i] = "идиот";
+        }
+
+        if (i >= countDiagnoses * 2 / 6 && i < countDiagnoses * 3 / 6)
+        {
+            diagnoses[i] = "дурак";
+        }
+
+        if (i >= countDiagnoses * 3 / 6 && i < countDiagnoses * 4 / 6)
+        {
+            diagnoses[i] = "нормальный";
+        }
+        if (i >= countDiagnoses * 4 / 6 && i < countDiagnoses * 5 / 6)
+        {
+            diagnoses[i] = "талант";
+        }
+        if (i >= countDiagnoses * 5 / 6 && i < countDiagnoses * 6 / 6)
+        {
+            diagnoses[i] = "гений";
+        }
+    }
     return diagnoses;
 }
