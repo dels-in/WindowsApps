@@ -5,7 +5,6 @@ var questions = GetQuestions(countQuestions);
 var answers = GetAnswers(countQuestions);
 var random = new Random();
 
-
 Console.WriteLine("Введите Ваше имя: ");
 var username = Console.ReadLine();
 var flag = true;
@@ -27,8 +26,7 @@ while (flag)
         }
 
         indexes.Add(randomQuestionIndex);
-
-
+        
         Console.WriteLine(questions[randomQuestionIndex]);
 
         var userAnswer = 0;
@@ -40,7 +38,6 @@ while (flag)
         }
 
         var rightAnswer = answers[randomQuestionIndex];
-
         if (userAnswer == rightAnswer)
         {
             countRightAnswers++;
@@ -50,13 +47,12 @@ while (flag)
     Console.WriteLine("Количество правильных ответов: " + countRightAnswers);
 
     var diagnoses = GetDiagnoses(countDiagnoses);
-
-    Console.WriteLine(username + ", Ваш диагноз: " + diagnoses[countRightAnswers] + ". Желаете повторить?");
     var asking = true;
+    Console.WriteLine(username + ", Ваш диагноз: " + diagnoses[countRightAnswers] + ". Желаете повторить?");
     while (asking)
     {
         var userWish = Console.ReadLine();
-        switch (userWish.ToLower())
+        switch (userWish!.ToLower())
         {
             case "да":
                 asking = false;
