@@ -29,10 +29,15 @@ while (flag)
         indexes.Add(randomQuestionIndex);
 
 
-
         Console.WriteLine(questions[randomQuestionIndex]);
 
-        var userAnswer = Convert.ToInt32(Console.ReadLine());
+        var userAnswer = 0;
+        var isNumericAnswer = false;
+        while (!isNumericAnswer)
+        {
+            Console.WriteLine("Введи число");
+            isNumericAnswer = int.TryParse(Console.ReadLine(), out userAnswer);
+        }
 
         var rightAnswer = answers[randomQuestionIndex];
 
@@ -67,7 +72,6 @@ while (flag)
         }
     }
 }
-
 
 
 static string[] GetQuestions(int countQuestions)
