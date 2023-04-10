@@ -12,7 +12,7 @@ var path = Environment.CurrentDirectory;
 var textFile = Combine(path, "Game results.txt");
 if (!File.Exists(textFile))
 {
-    File.WriteAllText(textFile, "|        Имя        |Количество правильных ответов|  Диагноз  |");
+    File.WriteAllText(textFile, "|    Имя    |Количество правильных ответов|  Диагноз  |");
 }
 
 using var textReader = new StreamReader(textFile);
