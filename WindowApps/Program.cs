@@ -1,9 +1,26 @@
-﻿var countQuestions = 5;
+﻿using static System.IO.Directory;
+using static System.IO.Path;
+
+var countQuestions = 5;
 var countDiagnoses = countQuestions + 1;
 var countRightAnswers = 0;
 var questions = GetQuestions(countQuestions);
 var answers = GetAnswers(countQuestions);
 var random = new Random();
+
+var path = Environment.CurrentDirectory;
+var textFile = Combine(path, "Game results.txt");
+if (!File.Exists(textFile))
+{
+    File.WriteAllText(textFile, "|        Имя        |Количество правильных ответов|  Диагноз  |");
+}
+
+using var textReader = new StreamReader(textFile);
+while (!textReader.EndOfStream)
+{
+    var text = textReader.ReadLine();
+    Console.WriteLine(text);
+}
 
 Console.WriteLine("Введите Ваше имя: ");
 var username = Console.ReadLine();
@@ -49,6 +66,11 @@ while (flag)
     var diagnoses = GetDiagnoses(countDiagnoses);
     var asking = true;
     Console.WriteLine(username + ", Ваш диагноз: " + diagnoses[countRightAnswers] + ". Желаете повторить?");
+    
+    File.AppendAllText(textFile, "\n | " + username + 
+                                 " |            " + countRightAnswers + "            | " 
+                                 + diagnoses[countRightAnswers] + " |");
+    
     while (asking)
     {
         var userWish = Console.ReadLine();
@@ -68,6 +90,7 @@ while (flag)
         }
     }
 }
+
 
 static string[] GetQuestions(int countQuestions)
 {
@@ -115,14 +138,17 @@ static string[] GetDiagnoses(int countDiagnoses)
         {
             diagnoses[i] = "нормальный";
         }
+
         if (i >= countDiagnoses * 4 / 6 && i < countDiagnoses * 5 / 6)
         {
             diagnoses[i] = "талант";
         }
+
         if (i >= countDiagnoses * 5 / 6 && i < countDiagnoses * 6 / 6)
         {
             diagnoses[i] = "гений";
         }
     }
+
     return diagnoses;
 }
