@@ -1,5 +1,4 @@
-﻿using static System.IO.Directory;
-using static System.IO.Path;
+﻿using static System.IO.Path;
 
 var countQuestions = 5;
 var countDiagnoses = countQuestions + 1;
@@ -8,19 +7,6 @@ var questions = GetQuestions(countQuestions);
 var answers = GetAnswers(countQuestions);
 var random = new Random();
 
-var path = Environment.CurrentDirectory;
-var textFile = Combine(path, "Game results.txt");
-if (!File.Exists(textFile))
-{
-    File.WriteAllText(textFile, "|    Имя    |Количество правильных ответов|  Диагноз  |");
-}
-
-using var textReader = new StreamReader(textFile);
-while (!textReader.EndOfStream)
-{
-    var text = textReader.ReadLine();
-    Console.WriteLine(text);
-}
 
 Console.WriteLine("Введите Ваше имя: ");
 var username = Console.ReadLine();
@@ -46,13 +32,7 @@ while (flag)
 
         Console.WriteLine(questions[randomQuestionIndex]);
 
-        var userAnswer = 0;
-        var isNumericAnswer = false;
-        while (!isNumericAnswer)
-        {
-            Console.WriteLine("Введи число");
-            isNumericAnswer = int.TryParse(Console.ReadLine(), out userAnswer);
-        }
+        var userAnswer = GetUserAnswer();
 
         var rightAnswer = answers[randomQuestionIndex];
         if (userAnswer == rightAnswer)
@@ -65,12 +45,13 @@ while (flag)
 
     var diagnoses = GetDiagnoses(countDiagnoses);
     var asking = true;
-    Console.WriteLine(username + ", Ваш диагноз: " + diagnoses[countRightAnswers] + ". Желаете повторить?");
-    
-    File.AppendAllText(textFile, "\n | " + username + 
-                                 " |            " + countRightAnswers + "            | " 
-                                 + diagnoses[countRightAnswers] + " |");
-    
+    Console.WriteLine(username + ", Ваш диагноз: " + diagnoses[countRightAnswers] +
+                      ". Желаете повторить? Для вывода результатов напишите \"Результаты\"");
+
+    var path = Environment.CurrentDirectory;
+    var textFile = Combine(path, "Game results.txt");
+    File.AppendAllText(textFile, $"{username}#{countRightAnswers}#{diagnoses[countRightAnswers]}\n");
+
     while (asking)
     {
         var userWish = Console.ReadLine();
@@ -84,6 +65,9 @@ while (flag)
                 Console.WriteLine("Что ж, до свидания!");
                 flag = false;
                 break;
+            case "результаты":
+                GetResults(textFile);
+                break;
             default:
                 Console.WriteLine("Да или нет?");
                 break;
@@ -91,6 +75,40 @@ while (flag)
     }
 }
 
+static void GetResults(string textFile)
+{
+    Console.WriteLine("{0,10} {1,32} {2,16}", "Имя", "Количество правильных ответов", "Диагноз");
+    using var textReader = new StreamReader(textFile);
+    while (!textReader.EndOfStream)
+    {
+        var text = textReader.ReadLine();
+        var values = text.Split("#");
+        var name = values[0];
+        var countRightAnswers = Convert.ToInt32(values[1]);
+        var diagnose = values[2];
+        
+        Console.WriteLine("{0,10}{1,20}{2,30}", name, countRightAnswers, diagnose);
+    }
+}
+
+static int GetUserAnswer()
+{
+    while (true)
+    {
+        try
+        {
+            return Convert.ToInt32(Console.ReadLine());
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Введи число");
+        }
+        catch (OverflowException)
+        {
+            Console.WriteLine("Введи число от -2*10^9 до 2*10^9");
+        }
+    }
+}
 
 static string[] GetQuestions(int countQuestions)
 {
