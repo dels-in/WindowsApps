@@ -4,7 +4,6 @@ var countQuestions = 5;
 var countDiagnoses = countQuestions + 1;
 var countRightAnswers = 0;
 var questions = GetQuestions(countQuestions);
-var answers = GetAnswers(countQuestions);
 var random = new Random();
 
 Console.WriteLine("Введите Ваше имя: ");
@@ -29,11 +28,11 @@ while (flag)
 
         indexes.Add(randomQuestionIndex);
 
-        Console.WriteLine(questions[randomQuestionIndex]);
+        Console.WriteLine(questions[randomQuestionIndex].Print);
 
         var userAnswer = GetUserAnswer();
 
-        var rightAnswer = answers[randomQuestionIndex];
+        var rightAnswer = questions[randomQuestionIndex]._answer;
         if (userAnswer == rightAnswer)
         {
             countRightAnswers++;
