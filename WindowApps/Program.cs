@@ -7,7 +7,6 @@ var questions = GetQuestions(countQuestions);
 var answers = GetAnswers(countQuestions);
 var random = new Random();
 
-
 Console.WriteLine("Введите Ваше имя: ");
 var username = Console.ReadLine();
 var flag = true;
@@ -110,26 +109,15 @@ static int GetUserAnswer()
     }
 }
 
-static string[] GetQuestions(int countQuestions)
+static List<Question> GetQuestions(int countQuestions)
 {
-    string[] questions = new string[countQuestions];
-    questions[0] = "Сколько будет два плюс два умноженное на два?";
-    questions[1] = "Бревно нужно распилить на 10 частей. Сколько распилов нужно сделать?";
-    questions[2] = "На двух руках 10 пальцев. Сколько пальцев на 5 руках?";
-    questions[3] = "Укол делают каждые полчаса. Сколько нужно минут, чтобы сделать три укола?";
-    questions[4] = "Пять свечей горело, две потухли. Сколько свечей осталось?";
+    var questions = new List<Question>();
+    questions.Add(new Question("Сколько будет два плюс два умноженное на два?", 6));
+    questions.Add(new Question( "Бревно нужно распилить на 10 частей. Сколько распилов нужно сделать?",9));
+    questions.Add(new Question( "На двух руках 10 пальцев. Сколько пальцев на 5 руках?",25));
+    questions.Add(new Question( "Укол делают каждые полчаса. Сколько нужно минут, чтобы сделать три укола?",6));
+    questions.Add(new Question("Пять свечей горело, две потухли. Сколько свечей осталось?", 2));
     return questions;
-}
-
-static int[] GetAnswers(int countAnswers)
-{
-    var answers = new int[countAnswers];
-    answers[0] = 6;
-    answers[1] = 9;
-    answers[2] = 25;
-    answers[3] = 60;
-    answers[4] = 2;
-    return answers;
 }
 
 static string[] GetDiagnoses(int countDiagnoses)
