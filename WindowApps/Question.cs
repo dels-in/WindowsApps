@@ -8,9 +8,4 @@ public class Question
         _text = text;
         _answer = answer;
     }
-
-    public string Print()
-    {
-        return _text;
-    }
 }
