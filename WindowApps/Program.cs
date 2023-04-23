@@ -6,7 +6,8 @@ var questions = questionStorage.GetQuestions();
 var random = new Random();
 
 Console.WriteLine("Введите Ваше имя: ");
-var username = new UserResultStorage(Console.ReadLine()!);
+var user = new User(Console.ReadLine()!);
+var userResultStorage = new UserResultStorage(user);
 var flag = true;
 while (flag)
 {
@@ -27,27 +28,27 @@ while (flag)
 
         indexes.Add(randomQuestionIndex);
 
-        Console.WriteLine(questions[randomQuestionIndex]);
+        Console.WriteLine(questions[randomQuestionIndex]._text);
 
-        var userAnswer = GetUserAnswer();
+        var userAnswer = userResultStorage.GetUserAnswer();
 
         var rightAnswer = questions[randomQuestionIndex]._answer;
         if (userAnswer == rightAnswer)
         {
-            countRightAnswers++;
+            user._countRightAnswers++;
         }
     }
 
-    Console.WriteLine("Количество правильных ответов: " + countRightAnswers);
+    Console.WriteLine("Количество правильных ответов: " + user._countRightAnswers);
 
-    var diagnoses = GetDiagnoses(countDiagnoses);
+    var diagnoses = questionStorage.GetDiagnoses();
     var asking = true;
-    Console.WriteLine(username + ", Ваш диагноз: " + diagnoses[countRightAnswers] +
+    Console.WriteLine(user._username + ", Ваш диагноз: " + diagnoses[user._countRightAnswers] +
                       ". Желаете повторить? Для вывода результатов напишите \"Результаты\"");
 
     var path = Environment.CurrentDirectory;
     var textFile = Combine(path, "Game results.txt");
-    File.AppendAllText(textFile, $"{username}#{countRightAnswers}#{diagnoses[countRightAnswers]}\n");
+    File.AppendAllText(textFile, $"{user._username}#{user._countRightAnswers}#{diagnoses[user._countRightAnswers]}\n");
 
     while (asking)
     {
@@ -63,7 +64,7 @@ while (flag)
                 flag = false;
                 break;
             case "результаты":
-                GetResults(textFile);
+                userResultStorage.GetResults(textFile);
                 break;
             default:
                 Console.WriteLine("Да или нет?");

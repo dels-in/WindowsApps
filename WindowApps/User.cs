@@ -9,9 +9,4 @@ public class User
     {
         _username = username;
     }
-
-    public void AddRightAnswers(int countRightAnswers)
-    {
-        _countRightAnswers += countRightAnswers;
-    }
 }

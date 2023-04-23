@@ -2,11 +2,11 @@ namespace WindowApps;
 
 public class UserResultStorage
 {
-    public List<User> _users;
+    public List<User> _users = new();
 
-    public UserResultStorage(string username)
+    public UserResultStorage(User user)
     {
-        _users.Add(new User(username));
+        _users.Add(user);
     }
 
     public void GetResults(string textFile)

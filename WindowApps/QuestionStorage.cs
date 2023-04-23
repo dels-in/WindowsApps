@@ -2,14 +2,15 @@ namespace WindowApps;
 
 public class QuestionStorage
 {
-    public List<Question> _questions;
+    public List<Question> _questions=new();
     public int _countQuestions;
     public int _countDiagnoses;
 
     public QuestionStorage(int countQuestions)
     {
         _countQuestions = countQuestions;
-        _countDiagnoses = _countQuestions + 1;
+        _countDiagnoses = countQuestions + 1;
+        //_questions = new List<Question>(countQuestions);
     }
     
     public List<Question> GetQuestions()
@@ -17,7 +18,7 @@ public class QuestionStorage
         _questions.Add(new Question("Сколько будет два плюс два умноженное на два?", 6));
         _questions.Add(new Question( "Бревно нужно распилить на 10 частей. Сколько распилов нужно сделать?",9));
         _questions.Add(new Question( "На двух руках 10 пальцев. Сколько пальцев на 5 руках?",25));
-        _questions.Add(new Question( "Укол делают каждые полчаса. Сколько нужно минут, чтобы сделать три укола?",6));
+        _questions.Add(new Question( "Укол делают каждые полчаса. Сколько нужно минут, чтобы сделать три укола?",60));
         _questions.Add(new Question("Пять свечей горело, две потухли. Сколько свечей осталось?", 2));
         return _questions;
     }
