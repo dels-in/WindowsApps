@@ -16,6 +16,9 @@ public class QuestionStorage
     {
         for (var i = 0; i < _countQuestions; i++)
         {
+            //для удаления существующего вопроса 
+            // if (i==6)
+            //     continue;
             switch (i)
             {
                 case 0:
