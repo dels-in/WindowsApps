@@ -1,6 +1,7 @@
 ﻿using WindowApps;
 using static System.IO.Path;
 
+var fileStorage = new FileStorage(Environment.CurrentDirectory);
 var questionStorage = new QuestionStorage(5);
 var questions = questionStorage.GetQuestions();
 var random = new Random();
@@ -46,10 +47,8 @@ while (flag)
     Console.WriteLine(user._username + ", Ваш диагноз: " + diagnoses[user._countRightAnswers] +
                       ". Желаете повторить? Для вывода результатов напишите \"Результаты\"");
 
-    var path = Environment.CurrentDirectory;
-    var textFile = Combine(path, "Game results.txt");
-    File.AppendAllText(textFile, $"{user._username}#{user._countRightAnswers}#{diagnoses[user._countRightAnswers]}\n");
-
+    fileStorage.SaveResults(user, diagnoses);
+   
     while (asking)
     {
         var userWish = Console.ReadLine();
@@ -64,7 +63,7 @@ while (flag)
                 flag = false;
                 break;
             case "результаты":
-                userResultStorage.GetResults(textFile);
+                fileStorage.GetResults();
                 break;
             default:
                 Console.WriteLine("Да или нет?");
