@@ -2,7 +2,8 @@
 using static System.IO.Path;
 
 var fileStorage = new FileStorage(Environment.CurrentDirectory);
-var questionStorage = new QuestionStorage(5);
+Console.WriteLine("Сколько вопросов?");
+var questionStorage = new QuestionStorage(Int32.Parse(Console.ReadLine()));
 var questions = questionStorage.GetQuestions();
 var random = new Random();
 

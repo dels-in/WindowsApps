@@ -9,22 +9,6 @@ public class UserResultStorage
         _users.Add(user);
     }
 
-    // public void GetResults(string textFile)
-    // {
-    //     Console.WriteLine("{0,10} {1,32} {2,16}", "Имя", "Количество правильных ответов", "Диагноз");
-    //     using var textReader = new StreamReader(textFile);
-    //     while (!textReader.EndOfStream)
-    //     {
-    //         var text = textReader.ReadLine();
-    //         var values = text.Split("#");
-    //         var name = values[0];
-    //         var countRightAnswers = Convert.ToInt32(values[1]);
-    //         var diagnose = values[2];
-    //     
-    //         Console.WriteLine("{0,10}{1,20}{2,30}", name, countRightAnswers, diagnose);
-    //     }
-    // }
-    
     public int GetUserAnswer()
     {
         while (true)
