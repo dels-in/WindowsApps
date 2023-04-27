@@ -2,14 +2,7 @@ namespace WindowApps;
 
 public class UserResultStorage
 {
-    public List<User> _users = new();
-
-    public UserResultStorage(User user)
-    {
-        _users.Add(user);
-    }
-
-    public int GetUserAnswer()
+    public static int GetUserAnswer()
     {
         while (true)
         {

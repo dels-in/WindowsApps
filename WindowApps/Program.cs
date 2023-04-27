@@ -9,7 +9,6 @@ var random = new Random();
 
 Console.WriteLine("Введите Ваше имя: ");
 var user = new User(Console.ReadLine()!);
-var userResultStorage = new UserResultStorage(user);
 var flag = true;
 while (flag)
 {
@@ -32,7 +31,7 @@ while (flag)
 
         Console.WriteLine(questions[randomQuestionIndex]._text);
 
-        var userAnswer = userResultStorage.GetUserAnswer();
+        var userAnswer = UserResultStorage.GetUserAnswer();
 
         var rightAnswer = questions[randomQuestionIndex]._answer;
         if (userAnswer == rightAnswer)

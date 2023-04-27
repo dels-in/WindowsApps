@@ -50,7 +50,7 @@ public class QuestionStorage
     public string[] GetDiagnoses()
     {
         var diagnoses = new string[_countDiagnoses];
-        var percent = 1 / _countDiagnoses;
+        var percent = 1 / (double)_countDiagnoses;
         for (var i = 0; i < _countDiagnoses; i++)
         {
             if (i < _countDiagnoses * percent)
