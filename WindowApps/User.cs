@@ -9,4 +9,9 @@ public class User
     {
         _username = username;
     }
+
+    public void AddCountRightAnswers()
+    {
+        _countRightAnswers++;
+    }
 }
