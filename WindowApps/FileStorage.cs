@@ -1,37 +1,29 @@
+using System.Text;
 using static System.IO.Path;
 
 namespace WindowApps;
 
-public class FileStorage
+public static class FileStorage
 {
-    public string _path;
-    public string _textFile;
-
-    public FileStorage(string path)
+    public static string GetResults(string fileName)
     {
-        _path = path;
-        _textFile = Combine(path, "Game results.txt");
-    }
-    
-    public void GetResults()
-    {
-        Console.WriteLine("{0,10} {1,32} {2,16}", "Имя", "Количество правильных ответов", "Диагноз");
-        using var textReader = new StreamReader(_textFile);
-        while (!textReader.EndOfStream)
-        {
-            var text = textReader.ReadLine();
-            var values = text.Split("#");
-            var name = values[0];
-            var countRightAnswers = Convert.ToInt32(values[1]);
-            var diagnose = values[2];
-        
-            Console.WriteLine("{0,10}{1,20}{2,30}", name, countRightAnswers, diagnose);
-        }
+        using var textReader = new StreamReader(Combine(Environment.CurrentDirectory, fileName), Encoding.UTF8);
+        return textReader.ReadToEnd();
     }
 
-    public void SaveResults(User user, string[] diagnoses)
+    public static void SaveResults(User user, string[] diagnoses, string fileName)
     {
-        var textFile = Combine(_path, "Game results.txt");
-        File.AppendAllText(textFile, $"{user._username}#{user._countRightAnswers}#{diagnoses[user._countRightAnswers]}\n");
+        File.AppendAllText(Combine(Environment.CurrentDirectory, fileName),
+            $"{user._username}#{user._countRightAnswers}#{diagnoses[user._countRightAnswers]}\n");
+    }
+
+    public static bool Exists(string fileName)
+    {
+        return File.Exists(Combine(Environment.CurrentDirectory, fileName));
+    }
+
+    public static void Clear(string fileName)
+    {
+        File.WriteAllText(Combine(Environment.CurrentDirectory, fileName), string.Empty);
     }
 }

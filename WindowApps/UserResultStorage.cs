@@ -1,8 +1,8 @@
 namespace WindowApps;
 
-public class UserResultStorage
+public static class UserResultStorage
 {
-    public static int GetUserAnswer()
+    public static int GetNumber()
     {
         while (true)
         {
